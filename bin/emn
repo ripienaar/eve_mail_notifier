@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'emn'
+
+emn = EMN.new
+emn.parse_options
+emn.send!
