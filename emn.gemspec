@@ -11,11 +11,12 @@ spec = Gem::Specification.new do |s|
   s.summary = 'Eve Online New Mail Notifier'
   s.description = "Get Pushover notification when your characters get mail"
 # Add your other files here if you make them
-  s.files = Dir.glob("{README.md,COPYING,bin,lib}/**/*").to_a
+  s.files = Dir.glob("{README.md,COPYING,bin,lib,templates}/**/*").to_a
   s.require_paths << 'lib'
   s.has_rdoc = false
   s.bindir = 'bin'
   s.executables << 'emn'
   s.add_dependency 'eaal'
   s.add_dependency 'pushover'
+  s.add_dependency 'tilt'
 end

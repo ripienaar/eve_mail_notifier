@@ -4,4 +4,4 @@ require 'emn'
 
 emn = EMN.new
 emn.parse_options
-emn.send!
+emn.process!

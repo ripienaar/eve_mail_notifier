@@ -1,0 +1,6 @@
+<% self[:data].keys.sort.each do |toon| %>
+<b><%= toon %>:</b>
+<%   self[:data][toon].each do |planet| %>
+<%=    "   %s: %s\n" % [planet[:name], planet[:time_till_expire]] %>
+<%   end %>
+<% end %>

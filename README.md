@@ -1,11 +1,15 @@
 What?
 =====
 
-Pushover notifier for new Eve Online emails.  All characters on an account gets checked and a single message gets sent.
+Pushover notifier for new Eve Online events. Currently it can check for new
+Emails and let you know of PI extractors due to end
+
+All characters on an account gets checked and a single message gets per monitor.
 
 Tested with Ruby 2.0.0, you need a Pushover client and subscription to use this.
 
-It's a bit hacky but does what I need
+It's a bit hacky but does what I need.  It started off as a mail notifier only
+but have since evolved into a general notifier due to some scope creep.
 
 Config?
 -------
@@ -30,8 +34,20 @@ The Eve API Key need at least ```MailMessages``` enabled.
 By default this config lives in ```~/.emn``` but you can run with ```--config``` to set a custom
 one, like maybe 1 file per account
 
-It tracks what mail has been seen and you can safely use the same file for many accounts but
+It tracks what items have been seen and you can safely use the same file for many accounts but
 this is also configurable, see ```--help```.
+
+Using?
+------
+
+I run mine from a local user crontab:
+
+```
+*/10 * * * * emn --mail --pi
+```
+
+You can run it frequently like this as it caches the API outputs, there's not really any reason
+to run it more frequently than this though
 
 Contact?
 --------

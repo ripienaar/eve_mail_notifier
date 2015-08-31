@@ -1,0 +1,22 @@
+<b>
+<%=
+  self[:data].keys.sort.map do |toon|
+    "%s: %s" % [toon, self[:data][toon].size]
+  end.join("\n")
+%>
+</b>
+
+<% self[:data].keys.sort.map do |toon| %>
+<b><%= toon %>:</b>
+<%=
+  self[:data][toon].reverse[0..self[:config][:max_notifications] - 1].map do |notification|
+    "   %s: %s" % [notification[:from], notification[:subject]]
+  end.join("\n")
+%>
+<%=
+  if self[:data][toon].size > self[:config][:max_notifications]
+    "   ... and %d more" % [self[:data][toon].size - self[:config][:max_notifications]]
+  end
+%>
+
+<% end %>
