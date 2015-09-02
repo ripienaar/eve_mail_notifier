@@ -83,7 +83,7 @@ class EMN
 
       notifications = checker.notifications
 
-      unless notifications[:data].empty?
+      if !notifications[:data].empty?
         template_file = File.expand_path(File.join(File.dirname(__FILE__), "..", notifications[:template]))
         logger.debug("Sending notifications using template %s" % template_file)
 
@@ -93,6 +93,8 @@ class EMN
         if pushover.publish(output, notifications[:subject])
           config.save_seen!(config.seen.merge(notifications[:seen]))
         end
+      else
+        config.save_seen!(config.seen.merge(notifications[:seen]))
       end
     end
   end
