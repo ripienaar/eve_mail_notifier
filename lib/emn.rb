@@ -97,5 +97,8 @@ class EMN
         config.save_seen!(config.seen.merge(notifications[:seen]))
       end
     end
+  rescue EAAL::Exception::EveAPIException
+    STDERR.puts("Failed to communicate with the EVE API: %s: %s: %s" % [$!.class, caller.first, $!.to_s])
+    exit 1
   end
 end
